@@ -1,0 +1,26 @@
+{% extends 'users/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="content-section">
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="row">
+                <div class="col-md-2 col-sm-2 col-xs-12 item form-group">
+                    {{ form.user_id|as_crispy_field }}
+                </div>
+                <div class="col-md-9 col-sm-9 col-xs-12 item form-group">
+                    {{ form.subject|as_crispy_field }}
+                </div>
+                <div class="col-md-1 col-sm-1 col-xs-12 item form-group">
+                    <button type="submit" class="btn btn-success mt-3">Send</button>
+                </div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12 item form-group">
+                {{ form.message|as_crispy_field }}
+            </div>
+
+        </form>
+    </div>
+{% endblock content%}

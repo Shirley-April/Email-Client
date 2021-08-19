@@ -1,0 +1,67 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+
+<main class="container">
+  <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+    <div class="col-md-12 px-0">
+      <h1 class="display-4 fst-italic">Integration of Google Email Client in Django</h1>
+      <p class="lead my-3">The project looks into how you can use Gmail as an Email Client for your website, this can be done when one needs a reliable and safe email client service. Also compounded by the fact that alot of organisation host their email accounts on Google's Gsuite due to its reliability.</p>
+      <p class="lead my-3">The project will display two use cases, the first being - sending an email to another user and the second being - requesting for a password reset, where the reset link will be emailed to the user.</p>
+    </div>
+  </div>
+
+<div class="row">
+    <div class="col-md-12">
+      <article class="blog-post">
+        <h3 class="pb-4 pt-4 mb-4 mt-4 fst-italic border-bottom border-top text-center">Sending Emails from the Web App</h3>
+        <p>Where to start:</p>
+        <ul>
+          <li>Sign up to create an account, use a valid email during sign up</li>
+          <li>Log out</li>
+          <li>Sign up to create a second account, use a valid email during sign up</li>
+          <li>Log in using either of the accounts</li>
+          <li>Click on "Compose Email" to compose an email</li>
+          <li>A page with a drop down list of registered will be displayed</li>
+          <li>Select the user you want to send an email to</li>
+          <li>Enter a subject</li>
+          <li>Compose a message</li>
+          <li>Click on "Send" to send the email</li>
+          <li>You will be notified once the email is successfully sent </li>
+          <li>Log into the email account for the user you selected</li>
+          <li>You should see the email that was sent in the "Inbox" or "Spam" folder</li>
+        </ul>
+          <br>
+      </article><!-- /.blog-post -->
+
+    </div>
+
+    <div class="col-md-12">
+      <article class="blog-post">
+        <h3 class="pb-4 pt-4 mb-4 mt-4 fst-italic border-bottom border-top text-center">Requesting for a Password Reset</h3>
+        <p>Where to start:</p>
+        <ul>
+          <li>Click on the "Log In" menu at the top right corner</li>
+          <li>If you're logged in, log out and go to the "Log In" page</li>
+          <li>Sign up to create a second account, use a valid email during sign up</li>
+          <li>On the "Log In" page click on "Forgot Password?" link</li>
+          <li>A "Reset Password page will be displayed for you to enter your email address </li>
+          <li>Enter the email address of one of the registered users</li>
+          <li>Log into the email account for the user you selected</li>
+          <li>You should see a request for password reset email in the "Inbox" or "Spam" folder</li>
+          <li>This email will have a link to it, click on the link</li>
+          <li>It will take you to a page for you to enter your new password</li>
+          <li>Once you have entered and submited the form, it will take you to a page confirming the password reset was a success</li>
+          <li>Log in to try the new password</li>
+        </ul>
+          <br>
+      </article><!-- /.blog-post -->
+
+    </div>
+
+  </div><!-- /.row -->
+
+</main>
+
+
+{% endblock content%}
