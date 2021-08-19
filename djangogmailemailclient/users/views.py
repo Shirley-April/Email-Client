@@ -24,34 +24,34 @@ def signup(request):
     # pass a blank sign up form when a user navigates to this page through a GET request
     else:
         form = UserSignUpForm()
-    return render(request, 'users/signup.html')
+    return render(request, 'users/signup.html', {'form': form})
 
 
 @login_reqired
 def send_email(request):
     if request.method == "POST":
+        # instantiate a new form with the data submitted
         form = EmailMessageForm(request.POST)
-        if form.is_valid()
-        #get the submitted subject
+        if form.is_valid():
 
-        subject = form.cleaned_data['subject']
+            #get the submitted subject
+            subject = form.cleaned_data['subject']
 
-        # get the submitted message
+            # get the submitted message
+            message = form.cleaned_data['message']
 
-        message = form.cleaned_data['message']
+            # get the submitted user_id which is the value of the option that was selected and submitted
+            user_id = form.cleaned_data['user_id']
 
-        # get the submitted user_id which is the value of the option that was selected and submitted
-        user_id = form.cleaned_data['user_id']
-
-        # get the user associated with the passed used_id
-        user = User.objects.get(user_id)
+            # get the user associated with the passed used_id
+            user = User.objects.get(user_id)
 
 
-        user.email_user(subject, message, request.user.get_full_name(), fail_silently=True)
+            user.email_user(subject, message, request.user.get_full_name(), fail_silently=True)
 
-        messages.success(request, f'An email has been sent to {user.get_full_name()}')
+            messages.success(request, f'An email has been sent to {user.get_full_name()}')
 
-        return redirect('index')
+            return redirect('index')
 
     # pass the blan email message form when a user navigates to the email page through a GET request
 
@@ -60,4 +60,6 @@ def send_email(request):
 
         context = {'form': form}
 
-        return render(request, 'users/send_email.html')
+        return render(request, 'users/send_email.html', context)
+
+
