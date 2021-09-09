@@ -9,6 +9,14 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
+import os
+import json
+
+with open('config.json') as conf_file:
+    config = json.load(conf_file)
+
+
+
 
 from pathlib import Path
 
@@ -126,3 +134,35 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Configure the Crispy package/app to use bootstart4 in its styling
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+LOGIN_REDIRECT_URL = 'index'
+# the route the user will automatically be redirected if they access a page without logging in
+LOGIN_URL = 'login'
+
+# email configuration settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+# the GMAIL account to use to send emails from
+
+# if you open/log into this email you will 
+# view all email sent from it to other emails
+EMAIL_HOST_USER = config.get('EMAIL_HOST')
+
+# if you saved the data inside window’s environmental variable 
+# EMAIL_HOST_USER = os.environ.get('EMAIL_HOST')
+
+# the generated app password for the GMAIL account to use
+EMAIL_HOST_PASSWORD = config.get('EMAIL_PASSWORD')
+
+# if you saved the data inside window’s environmental variable 
+# EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD')
+
+# if you don't know what I mean by "generated app password" 
+# read the article below which this project is based on to
+#  know what it is, where and how to get one

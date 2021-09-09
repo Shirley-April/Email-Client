@@ -27,7 +27,7 @@ def signup(request):
     return render(request, 'users/signup.html', {'form': form})
 
 
-@login_reqired
+@login_required
 def send_email(request):
     if request.method == "POST":
         # instantiate a new form with the data submitted
